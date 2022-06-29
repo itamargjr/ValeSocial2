@@ -261,6 +261,12 @@ public class AcessoBean implements Serializable {
 		
 		//System.out.println("usulog:" + usulog);
 		
+		if (usulog !=null) {
+			if (usulog ==0) {
+				usulog = null;
+			}
+		}
+		
 		return usulog !=null;
 	}
 	
