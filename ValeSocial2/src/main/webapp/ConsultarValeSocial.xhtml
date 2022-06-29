@@ -102,7 +102,7 @@
                  rowsPerPageTemplate="5,10,15">
 
 					<p:column headerText="Requerente" sortBy="#{vs.requerente_valesoc}">
-						<p:commandLink value="#{vs.requerente_valesoc}" action="#{valesocialBean.mostradialogocandidato}" update=":formcadastro">
+						<p:commandLink value="#{vs.requerente_valesoc}" action="#{valesocialBean.mostradialogorequerimento}" update=":formcadastro">
 							<f:setPropertyActionListener value="#{vs}" target="#{valesocialBean.valesocial}" />
 							<p:ajax event="dialogReturn" update=":formcadastro" /> 
 						</p:commandLink>
@@ -306,7 +306,11 @@
       				</div>
 		        </p:tab>
 		    </p:tabView>
-		    	<p:commandButton styleClass="BotaoPrimario" action="#{edu_matr_candidatoBean.imprimirFicha}" value="Imprimir Inscrição" ajax="false" />
+		    
+		    <hr/>
+		    
+		    <p:commandButton styleClass="BotaoPrimario" action="#{edu_matr_candidatoBean.imprimirFicha}" value="Imprimir Ficha" ajax="false" />
+   	  		
    	  		</h:form>
    	  	</p:dialog>	
 

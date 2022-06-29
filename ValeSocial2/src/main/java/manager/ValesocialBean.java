@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.PrimeFaces;
+
 import entity.ValeSocial;
 import persistence.ValeSocialDao;
 import util.Biblioteca;
@@ -103,8 +105,8 @@ public class ValesocialBean {
 		return null;
 	}
 	
-	public void mostradialogocandidato() {
-		
+	public void mostradialogorequerimento() {
+		PrimeFaces.current().executeScript("PF('Dialogo').show();");		
 	}
 
 }
