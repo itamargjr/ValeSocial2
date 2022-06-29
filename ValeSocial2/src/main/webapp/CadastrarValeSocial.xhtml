@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+<ui:composition template="#{paginasBean._template}">  
+    <ui:define name="corpo">
+    
+    	<p:messages />
+			
+		<p:panel header="Cadastro de Vale Social para Portadores de Deficiência e Doença Crônica"> 
+
+    		<h:form id="formcadastro">
+    		
+    			<p:growl id="growl" showDetail="true" sticky="true" /> 
+    		
+    			<p:panel header="Dados Cadastrais">
+    				<div class="ObjetosLinha">
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="CPF"/>
+      						<p:inputText onfocus="Cpf(this)" value="#{valesocialBean.valesocial.cpf_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o CPF">
+      							<p:ajax listener="#{valesocialBean.testaCPF()}" update=":formcadastro " />
+      						</p:inputText>
+      					</div>
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Nome do Requerente"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.requerente_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o nome do requerente"/>
+      					</div> 
+      					<div class="ObjetosColuna">
+							<p:outputLabel value="Nascimento" />
+							<p:inputText  onfocus="Data(this)" value="#{valesocialBean.valesocial.nascimento_valesoc}" class="TamanhoMIN" required="true" requiredMessage="por favor informe a data de nascimento" />
+						</div>
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Sexo" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.sexo_valesoc}" styleClass="TamanhoSelectMIN" required="true" requiredMessage="por favor informe o sexo">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="M" itemLabel="Masculino" />
+								<f:selectItem itemValue="F" itemLabel="Feminino" />									
+							</p:selectOneMenu>
+						</div>
+					</div>
+					<div class="ObjetosLinha">
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="Nome do Responsável"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.nomeresp_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o responsável"/>
+      					</div> 
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="CPF do Responsável"/>
+      						<p:inputText onfocus="Cpf(this)" value="#{valesocialBean.valesocial.cpfresp_valesoc}" styleClass="TamanhoM"  required="true" requiredMessage="por favor informe o CPF do responsável">
+      							<p:ajax listener="#{valesocialBean.testaCPFResp()}"  />
+      						</p:inputText>
+      					</div> 
+					</div>
+
+					<div class="ObjetosLinha">						 
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Identidade/Cert. Nasc."/>
+      						<p:inputText value="#{valesocialBean.valesocial.identidade_valesoc}" styleClass="TamanhoP" required="true" requiredMessage="por favor informe a identidade ou número do registro de nascimento"/>
+      					</div>  
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Órgão Emissor" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.orgaoidt_valesoc}" styleClass="TamanhoSelectMIN" required="true" requiredMessage="por favor informe a identidade ou número do registro de nascimento">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="D" itemLabel="DETRAN" />
+								<f:selectItem itemValue="S" itemLabel="Secretaria de Segurança Pública (SSP)" />
+								<f:selectItem itemValue="A" itemLabel="Min. Aeronáutica" />
+								<f:selectItem itemValue="E" itemLabel="Min. Exército" />	
+								<f:selectItem itemValue="M" itemLabel="Min. Marinha" />		
+								<f:selectItem itemValue="O" itemLabel="Outros" />								
+							</p:selectOneMenu>
+						</div>  
+      				</div>
+
+					<div class="ObjetosLinha">					
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="Nome da Mãe"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.mae_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o nome da mãe"/>
+      					</div>  
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Nome do Pai"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.pai_valesoc}" styleClass="TamanhoM"/>
+      					</div> 
+      				</div>
+	      		</p:panel>
+      			<p:panel header="Endereço">	
+					<div class="ObjetosLinha">
+						<div class="ObjetosColuna">
+	  						<p:outputLabel value="Logradouro"/>
+	            			<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.logradouro_valesoc}" maxlength="30" styleClass="TextoCaixaAlta TamanhoG" required="true" requiredMessage="por favor informe o logradouro"/>
+      					</div>
+      				</div>
+     				<div class="ObjetosLinha">
+		      			<div class="ObjetosColuna">
+     						<p:outputLabel value="Número"/>
+		            		<p:inputText value="#{valesocialBean.valesocial.numero_valesoc}" maxlength="5" styleClass="TextoCaixaAlta TamanhoMIN" required="true" requiredMessage="por favor informe o número"/>
+	      				</div>
+		      		
+	      				<div class="ObjetosColuna">
+	     					<p:outputLabel value="Complemento"/>
+		            		<p:inputText value="#{valesocialBean.valesocial.complemento_valesoc}" maxlength="19" styleClass="TextoCaixaAlta TamanhoMIN"/>
+	      				</div>
+	      				<div class="ObjetosColuna">
+							<p:outputLabel value="Bairro" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.bairro_valesoc}" styleClass="TamanhoSelectM" required="true" requiredMessage="por favor informe o bairro">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="Bairro da Mina" itemLabel="Bairro da Mina" />
+								<f:selectItem itemValue="Cabral" itemLabel="Cabral" /> 
+								<f:selectItem itemValue="Cabuis" itemLabel="Cabuis" />
+								<f:selectItem itemValue="Centro" itemLabel="Centro" />
+								<f:selectItem itemValue="Frigorífico" itemLabel="Frigorífico" />
+								<f:selectItem itemValue="Manoel Reis" itemLabel="Manoel Reis" />
+								<f:selectItem itemValue="N. S. de Fátima" itemLabel="N. S. de Fátima" />
+								<f:selectItem itemValue="Nova Cidade" itemLabel="Nova Cidade" />
+								<f:selectItem itemValue="Novo Horizonte" itemLabel="Novo Horizonte" />
+								<f:selectItem itemValue="Olinda" itemLabel="Olinda" />
+								<f:selectItem itemValue="Paiol" itemLabel="Paiol" />
+								<f:selectItem itemValue="Santos Dumont" itemLabel="Santos Dumont" />
+								<f:selectItem itemValue="Tropical" itemLabel="Tropical" />
+								<f:selectItem itemValue="Outro" itemLabel="Outro Município" />								
+							</p:selectOneMenu>
+						</div>
+						<div class="ObjetosColuna">
+     						<p:outputLabel value="CEP"/>
+		        			<p:inputText onfocus="Cep(this)" value="#{valesocialBean.valesocial.cep_valesoc}" maxlength="11" styleClass="TextoCaixaAlta TamanhoMIN" required="true" requiredMessage="por favor informe o CEP"/>
+						</div>					
+	      			</div>
+      				<div class="ObjetosLinha">
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Telefone"/>
+      						<p:inputText onfocus="TelFixo(this)" value="#{valesocialBean.valesocial.telefone_valesoc}" styleClass="TamanhoM"/>
+      					</div>
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Celular"/>
+      						<p:inputText onfocus="TelCel(this)" value="#{valesocialBean.valesocial.celular_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o celular"/>
+      					</div>
+      				</div>	
+    			</p:panel>
+    			<p:panel header="Entrevista">
+					<div class="ObjetosLinha">  
+      					<div class="ObjetosColuna">
+							<p:outputLabel value="Tipo de Transporte Utilizado" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.tipotransp_valesoc}" styleClass="TamanhoSelectM" required="true" requiredMessage="por favor informe o transporte">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="T" itemLabel="Trem" />
+								<f:selectItem itemValue="B" itemLabel="Barca" /> 
+								<f:selectItem itemValue="M" itemLabel="Metrô" />
+								<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />							
+							</p:selectOneMenu>
+						</div> 
+					</div>
+      				<div class="ObjetosLinha">   					
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="Origem"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe a origem"/>
+      					</div> 
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Desino"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o destino"/>
+      					</div>
+      				</div>
+      				<div class="ObjetosLinha">   					
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="Origem"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem2_valesoc}" styleClass="TamanhoM"/>
+      					</div> 
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Desino"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino2_valesoc}" styleClass="TamanhoM"/>
+      					</div>
+      				</div>
+      				<div class="ObjetosLinha">   					
+						<div class="ObjetosColuna">
+      						<p:outputLabel value="Origem"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem3_valesoc}" styleClass="TamanhoM"/>
+      					</div> 
+      					<div class="ObjetosColuna">
+      						<p:outputLabel value="Desino"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino3_valesoc}" styleClass="TamanhoM"/>
+      					</div>
+      				</div>
+	      		</p:panel>	 
+         			<br/>
+         			
+			    <p:commandButton styleClass="BotaoPrimario" action="#{valesocialBean.cadastrar}" value="Cadastrar" ajax="false" onclick="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />      			
+      			
+      		</h:form>
+   	  </p:panel>
+
+    </ui:define>
+  </ui:composition>   
+</html>
+
+
