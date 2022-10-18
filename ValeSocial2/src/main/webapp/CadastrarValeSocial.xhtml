@@ -144,11 +144,10 @@
       					<div class="ObjetosColuna">
 							<p:outputLabel value="Tipo de Transporte Utilizado" />
 							<p:selectOneMenu value="#{valesocialBean.valesocial.tipotransp_valesoc}" styleClass="TamanhoSelectM" required="true" requiredMessage="por favor informe o transporte">
-								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />
 								<f:selectItem itemValue="T" itemLabel="Trem" />
 								<f:selectItem itemValue="B" itemLabel="Barca" /> 
-								<f:selectItem itemValue="M" itemLabel="Metrô" />
-								<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />							
+								<f:selectItem itemValue="M" itemLabel="Metrô" />									
 							</p:selectOneMenu>
 						</div> 
 					</div>
@@ -158,7 +157,7 @@
       						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe a origem"/>
       					</div> 
       					<div class="ObjetosColuna">
-      						<p:outputLabel value="Desino"/>
+      						<p:outputLabel value="Destino"/>
       						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o destino"/>
       					</div>
       				</div>
@@ -168,7 +167,7 @@
       						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem2_valesoc}" styleClass="TamanhoM"/>
       					</div> 
       					<div class="ObjetosColuna">
-      						<p:outputLabel value="Desino"/>
+      						<p:outputLabel value="Destino"/>
       						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino2_valesoc}" styleClass="TamanhoM"/>
       					</div>
       				</div>
@@ -178,7 +177,7 @@
       						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem3_valesoc}" styleClass="TamanhoM"/>
       					</div> 
       					<div class="ObjetosColuna">
-      						<p:outputLabel value="Desino"/>
+      						<p:outputLabel value="Destino"/>
       						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino3_valesoc}" styleClass="TamanhoM"/>
       					</div>
       				</div>

@@ -45,6 +45,14 @@ public class ValeSocial {
 	private String nomeposto_valesoc;
 	private String procsetrans_valesoc;
 	private String tiporeq_valesoc;
+	private String exigencia_valesoc;
+	private String motexigencia_valesoc;
+	private String periciamed_valesoc;
+	private String defpermtrans_valesoc;
+	private Integer quantvales_valesoc;
+    private String motindefermed_valesoc;
+    private String medico_valesoc;
+    private String dataanalisemed_valesoc;
 	
 	public ValeSocial() {
 		super();
@@ -61,7 +69,9 @@ public class ValeSocial {
 			String recebidosetrans_valesoc, String resultadosetrans_valesoc, String analisadosetrans_valesoc,
 			String tipodef_valesoc, String cid_valesoc, String acompanhante_valesoc, Integer frequenciatrat_valesoc,
 			String motindefer_valesoc, String codposto_valesoc, String nomeposto_valesoc, String procsetrans_valesoc,
-			String tiporeq_valesoc) {
+			String tiporeq_valesoc, String exigencia_valesoc, String motexigencia_valesoc, String periciamed_valesoc,
+			String defpermtrans_valesoc, Integer quantvales_valesoc, String motindefermed_valesoc,
+			String medico_valesoc, String dataanalisemed_valesoc) {
 		super();
 		this.id_valesoc = id_valesoc;
 		this.data_valesoc = data_valesoc;
@@ -107,6 +117,78 @@ public class ValeSocial {
 		this.nomeposto_valesoc = nomeposto_valesoc;
 		this.procsetrans_valesoc = procsetrans_valesoc;
 		this.tiporeq_valesoc = tiporeq_valesoc;
+		this.exigencia_valesoc = exigencia_valesoc;
+		this.motexigencia_valesoc = motexigencia_valesoc;
+		this.periciamed_valesoc = periciamed_valesoc;
+		this.defpermtrans_valesoc = defpermtrans_valesoc;
+		this.quantvales_valesoc = quantvales_valesoc;
+		this.motindefermed_valesoc = motindefermed_valesoc;
+		this.medico_valesoc = medico_valesoc;
+		this.dataanalisemed_valesoc = dataanalisemed_valesoc;
+	}
+
+	public String getExigencia_valesoc() {
+		return exigencia_valesoc;
+	}
+
+	public void setExigencia_valesoc(String exigencia_valesoc) {
+		this.exigencia_valesoc = exigencia_valesoc;
+	}
+
+	public String getMotexigencia_valesoc() {
+		return motexigencia_valesoc;
+	}
+
+	public void setMotexigencia_valesoc(String motexigencia_valesoc) {
+		this.motexigencia_valesoc = motexigencia_valesoc;
+	}
+
+	public String getPericiamed_valesoc() {
+		return periciamed_valesoc;
+	}
+
+	public void setPericiamed_valesoc(String periciamed_valesoc) {
+		this.periciamed_valesoc = periciamed_valesoc;
+	}
+
+	public String getDefpermtrans_valesoc() {
+		return defpermtrans_valesoc;
+	}
+
+	public void setDefpermtrans_valesoc(String defpermtrans_valesoc) {
+		this.defpermtrans_valesoc = defpermtrans_valesoc;
+	}
+
+	public Integer getQuantvales_valesoc() {
+		return quantvales_valesoc;
+	}
+
+	public void setQuantvales_valesoc(Integer quantvales_valesoc) {
+		this.quantvales_valesoc = quantvales_valesoc;
+	}
+
+	public String getMotindefermed_valesoc() {
+		return motindefermed_valesoc;
+	}
+
+	public void setMotindefermed_valesoc(String motindefermed_valesoc) {
+		this.motindefermed_valesoc = motindefermed_valesoc;
+	}
+
+	public String getMedico_valesoc() {
+		return medico_valesoc;
+	}
+
+	public void setMedico_valesoc(String medico_valesoc) {
+		this.medico_valesoc = medico_valesoc;
+	}
+
+	public String getDataanalisemed_valesoc() {
+		return dataanalisemed_valesoc;
+	}
+
+	public void setDataanalisemed_valesoc(String dataanalisemed_valesoc) {
+		this.dataanalisemed_valesoc = dataanalisemed_valesoc;
 	}
 
 	public String getTelefone_valesoc() {
@@ -470,18 +552,23 @@ public class ValeSocial {
 				+ ", identidade_valesoc=" + identidade_valesoc + ", orgaoidt_valesoc=" + orgaoidt_valesoc
 				+ ", logradouro_valesoc=" + logradouro_valesoc + ", numero_valesoc=" + numero_valesoc
 				+ ", complemento_valesoc=" + complemento_valesoc + ", bairro_valesoc=" + bairro_valesoc
-				+ ", cidade_valesoc=" + cidade_valesoc + ", uf_valesoc=" + uf_valesoc + ", tipotransp_valesoc="
-				+ tipotransp_valesoc + ", origem1_valesoc=" + origem1_valesoc + ", destino1_valesoc=" + destino1_valesoc
-				+ ", tipotransp1_valesoc=" + tipotransp1_valesoc + ", origem2_valesoc=" + origem2_valesoc
-				+ ", destino2_valesoc=" + destino2_valesoc + ", tipotransp2_valesoc=" + tipotransp2_valesoc
-				+ ", origem3_valesoc=" + origem3_valesoc + ", destino3_valesoc=" + destino3_valesoc
-				+ ", tipotransp3_valesoc=" + tipotransp3_valesoc + ", enviadosetrans_valesoc=" + enviadosetrans_valesoc
-				+ ", recebidosetrans_valesoc=" + recebidosetrans_valesoc + ", resultadosetrans_valesoc="
-				+ resultadosetrans_valesoc + ", analisadosetrans_valesoc=" + analisadosetrans_valesoc
-				+ ", tipodef_valesoc=" + tipodef_valesoc + ", cid_valesoc=" + cid_valesoc + ", acompanhante_valesoc="
-				+ acompanhante_valesoc + ", frequenciatrat_valesoc=" + frequenciatrat_valesoc + ", motindefer_valesoc="
-				+ motindefer_valesoc + ", codposto_valesoc=" + codposto_valesoc + ", nomeposto_valesoc="
-				+ nomeposto_valesoc + ", procsetrans_valesoc=" + procsetrans_valesoc + ", tiporeq_valesoc="
-				+ tiporeq_valesoc + "]";
+				+ ", cidade_valesoc=" + cidade_valesoc + ", cep_valesoc=" + cep_valesoc + ", uf_valesoc=" + uf_valesoc
+				+ ", telefone_valesoc=" + telefone_valesoc + ", celular_valesoc=" + celular_valesoc
+				+ ", tipotransp_valesoc=" + tipotransp_valesoc + ", origem1_valesoc=" + origem1_valesoc
+				+ ", destino1_valesoc=" + destino1_valesoc + ", tipotransp1_valesoc=" + tipotransp1_valesoc
+				+ ", origem2_valesoc=" + origem2_valesoc + ", destino2_valesoc=" + destino2_valesoc
+				+ ", tipotransp2_valesoc=" + tipotransp2_valesoc + ", origem3_valesoc=" + origem3_valesoc
+				+ ", destino3_valesoc=" + destino3_valesoc + ", tipotransp3_valesoc=" + tipotransp3_valesoc
+				+ ", enviadosetrans_valesoc=" + enviadosetrans_valesoc + ", recebidosetrans_valesoc="
+				+ recebidosetrans_valesoc + ", resultadosetrans_valesoc=" + resultadosetrans_valesoc
+				+ ", analisadosetrans_valesoc=" + analisadosetrans_valesoc + ", tipodef_valesoc=" + tipodef_valesoc
+				+ ", cid_valesoc=" + cid_valesoc + ", acompanhante_valesoc=" + acompanhante_valesoc
+				+ ", frequenciatrat_valesoc=" + frequenciatrat_valesoc + ", motindefer_valesoc=" + motindefer_valesoc
+				+ ", codposto_valesoc=" + codposto_valesoc + ", nomeposto_valesoc=" + nomeposto_valesoc
+				+ ", procsetrans_valesoc=" + procsetrans_valesoc + ", tiporeq_valesoc=" + tiporeq_valesoc
+				+ ", exigencia_valesoc=" + exigencia_valesoc + ", motexigencia_valesoc=" + motexigencia_valesoc
+				+ ", periciamed_valesoc=" + periciamed_valesoc + ", defpermtrans_valesoc=" + defpermtrans_valesoc
+				+ ", quantvales_valesoc=" + quantvales_valesoc + ", motindefermed_valesoc=" + motindefermed_valesoc
+				+ ", medico_valesoc=" + medico_valesoc + ", dataanalisemed_valesoc=" + dataanalisemed_valesoc + "]";
 	}
 }

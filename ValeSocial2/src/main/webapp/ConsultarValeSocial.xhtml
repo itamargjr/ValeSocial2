@@ -143,6 +143,12 @@
 					<p:column headerText="Resultado">
 						<p:outputLabel value="#{vs.resultadosetrans_valesoc}"/>
 					</p:column>
+					
+					<p:column>
+						<p:commandLink value="Imprimir Ficha" action="#{valesocialBean.imprimirFicha}">
+							<f:setPropertyActionListener value="#{vs}" target="#{valesocialBean.valesocial}" />
+						</p:commandLink>
+					</p:column>
 				</p:dataTable>
 			</p:panel>	
       	</h:form>
