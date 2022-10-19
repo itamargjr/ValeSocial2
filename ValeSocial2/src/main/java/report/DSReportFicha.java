@@ -168,13 +168,15 @@ public class DSReportFicha implements JRDataSource {
 			return registro.getCid_valesoc();
 		}
 		
-		if(field.getName().equalsIgnoreCase("acompanhante_valesoc")){
+		if(field.getName().equalsIgnoreCase("acompanhante_valesoc")){ 
 			return registro.getAcompanhante_valesoc();
 		}
 		
-		if (registro.getFrequenciatrat_valesoc()!=null) {
-			if(field.getName().equalsIgnoreCase("frequenciatrat_valesoc")){
+		if (field.getName().equalsIgnoreCase("frequenciatrat_valesoc")){
+			if (registro.getFrequenciatrat_valesoc()!=null) {			
 				return new BigDecimal(registro.getFrequenciatrat_valesoc());
+			} else {
+				return new BigDecimal(0.0);
 			}
 		}
 		
@@ -214,9 +216,11 @@ public class DSReportFicha implements JRDataSource {
 			return registro.getDefpermtrans_valesoc();
 		}
 		
-		if (registro.getQuantvales_valesoc()!=null) {
-			if(field.getName().equalsIgnoreCase("quantvales_valesoc")){
+		if(field.getName().equalsIgnoreCase("quantvales_valesoc")){
+			if (registro.getQuantvales_valesoc()!=null) {			
 				return new BigDecimal(registro.getQuantvales_valesoc());
+			} else {
+				return new BigDecimal(0.0);
 			}
 		}
 		

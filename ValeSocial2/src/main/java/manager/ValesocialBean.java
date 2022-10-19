@@ -24,7 +24,7 @@ import util.Biblioteca;
 @ViewScoped
 public class ValesocialBean {
 	
-	private ValeSocial valesocial;
+	private ValeSocial valesocial; 
 	
 	private List< ValeSocial> valesociallista;
 	
@@ -112,33 +112,34 @@ public class ValesocialBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nenhuma informação encontrada para enviar imprimir", "")); // passa a mensagem
 		} else {
 
-			try{		
-				
+			try{	
+	
 				valesociallista = new ValeSocialDao().findAll(valesocial);
-				
+
 				if(valesociallista.size()==0) {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ficha não encontrada", "")); // passa a mensagem
 				} else {
-					DSReportFicha ds = new DSReportFicha(valesociallista);
-					
+
+					DSReportFicha ds = new DSReportFicha(valesociallista);					
+
 					InputStream arquivo = FacesContext.getCurrentInstance()
 						.getExternalContext().getResourceAsStream("/valesocial.jasper");	
-
+				
 					byte[] pdf = JasperRunManager.runReportToPdf(arquivo, null, ds);
-						
+
 					HttpServletResponse res = (HttpServletResponse) FacesContext
 							.getCurrentInstance().getExternalContext().getResponse();
-						
+	
 					res.setContentType("application/pdf");
-					
+
 					res.setContentLength(pdf.length);
-						
+	
 					OutputStream out = res.getOutputStream();
 
 					out.write(pdf, 0, pdf.length);
 
 					out.flush();	
-					
+
 					out.close();
 					
 					FacesContext.getCurrentInstance().responseComplete();
