@@ -96,7 +96,7 @@
     	
     		<p:panel rendered="#{valesocialBean.valesociallista.size() gt 0}">	
 
-    			<p:dataTable value="#{valesocialBean.valesociallista}" var="vs" id="dataTableDetalhe" rows="20" paginator="true" 
+    			<p:dataTable value="#{valesocialBean.valesociallistaenviadossetrans}" var="vs" id="dataTableDetalhe" rows="20" paginator="true" 
                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}{RowsPerPageDropdown}"
                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                  rowsPerPageTemplate="5,10,15">
@@ -315,7 +315,7 @@
 		    
 		    <hr/>
 		    
-		    <p:commandButton styleClass="BotaoPrimario" action="#{edu_matr_candidatoBean.imprimirFicha}" value="Imprimir Ficha" ajax="false" />
+		    <p:commandButton styleClass="BotaoPrimario" action="#{valesocialBean.imprimirFicha}" value="Imprimir Ficha" ajax="false" />
    	  		
    	  		</h:form>
    	  	</p:dialog>	

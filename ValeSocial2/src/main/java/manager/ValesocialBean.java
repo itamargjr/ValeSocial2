@@ -3,6 +3,7 @@ package manager;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +28,34 @@ public class ValesocialBean {
 	private ValeSocial valesocial; 
 	
 	private List< ValeSocial> valesociallista;
+	private List< ValeSocial> valesociallistaenviadossetrans;
 	
 	public ValesocialBean() {
 		
 		valesocial = new ValeSocial();
 		
 		valesociallista = new ArrayList<ValeSocial>();
+		
+		try {
+			
+			ValeSocialDao vd  = new ValeSocialDao();
+			
+			valesociallistaenviadossetrans = vd.findAllenviados();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 
+	}
+
+	public List<ValeSocial> getValesociallistaenviadossetrans() {
+		return valesociallistaenviadossetrans;
+	}
+
+	public void setValesociallistaenviadossetrans(List<ValeSocial> valesociallistaenviadossetrans) {
+		this.valesociallistaenviadossetrans = valesociallistaenviadossetrans;
 	}
 
 	public ValeSocial getValesocial() {
@@ -165,6 +187,31 @@ public class ValesocialBean {
 	
 	public void mostradialogorequerimento() {
 		PrimeFaces.current().executeScript("PF('Dialogo').show();");		
+	}
+	
+	public void abrirdialogoenviosetrans() {
+		PrimeFaces.current().executeScript("PF('dialogoenviosetrans').show();");		
+	}
+	
+	public void confirmarenviosetrans() {
+		try {
+			
+			java.util.Date data = new java.util.Date();
+			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+			valesocial.setEnviadosetrans_valesoc(formatador.format(data));
+			
+			ValeSocialDao vd  = new ValeSocialDao();
+			
+			vd.enviasetrans(valesocial);
+			
+			PrimeFaces.current().executeScript("PF('dialogoenviosetrans').hide();");	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}	
 	}
 
 }
