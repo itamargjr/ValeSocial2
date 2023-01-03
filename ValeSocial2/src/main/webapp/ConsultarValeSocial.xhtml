@@ -12,7 +12,7 @@
     
     	<p:messages />  	
 			
-		<p:panel header="Preencha os dados abaixo para filtrar">
+		<p:panel header="Consultar Todos os Requerimentos">
 		
 			<h:form id="formpesquisa">
       			<div class="ObjetosLinha">  	
@@ -141,7 +141,7 @@
 					</p:column>
 					
 					<p:column headerText="Resultado">
-						<p:outputLabel value="#{vs.resultadosetrans_valesoc}"/>
+						<p:outputLabel value="#{vs.resultadosetrans_valesoc eq 'D' ? 'DEFERIDO' : 'Indeferido'}"/>
 					</p:column>
 					
 					<p:column>

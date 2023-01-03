@@ -23,6 +23,23 @@ public class ValeSocialDao extends Dao {
 
 	}
 	
+	public void retornosetrans(ValeSocial vs) throws Exception{	
+		
+		open();	
+		
+		String smtp = "update cid_valesocial  set recebidosetrans_valesoc = ?, resultadosetrans_valesoc = ?, analisadosetrans_valesoc = ?  where id_valesoc = ?";			
+	
+		stmt = con.prepareStatement(smtp);
+
+		stmt.setString(1, vs.getRecebidosetrans_valesoc());
+		stmt.setString(2, vs.getResultadosetrans_valesoc());
+		stmt.setString(3, vs.getAnalisadosetrans_valesoc());
+		stmt.setInt(4, vs.getId_valesoc());
+
+		stmt.executeUpdate();
+
+	}
+	
 	public void gravar(ValeSocial vs) throws Exception{	
 		
 		open();	

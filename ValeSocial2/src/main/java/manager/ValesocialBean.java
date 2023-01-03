@@ -213,5 +213,32 @@ public class ValesocialBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}	
 	}
+	
+	public void mostradialogoretorno() {
+		
+		java.util.Date data = new java.util.Date();
+		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+		valesocial.setRecebidosetrans_valesoc(formatador.format(data));
+		valesocial.setAnalisadosetrans_valesoc(formatador.format(data));
+		
+		PrimeFaces.current().executeScript("PF('DialogoRetorno').show();");		
+	}
+	
+	public void ConfirmarretornoSetrans() {
+		try {
+		
+			ValeSocialDao vd  = new ValeSocialDao();
+			
+			vd.retornosetrans(valesocial);
+			
+			PrimeFaces.current().executeScript("PF('DialogoRetorno').hide();");	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}	
+	}
 
 }
