@@ -46,11 +46,11 @@
 					<div class="ObjetosLinha">
 						<div class="ObjetosColuna">
       						<p:outputLabel value="Nome do Responsável"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.nomeresp_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o responsável"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.nomeresp_valesoc}" styleClass="TamanhoM" />
       					</div> 
 						<div class="ObjetosColuna">
       						<p:outputLabel value="CPF do Responsável"/>
-      						<p:inputText onfocus="Cpf(this)" value="#{valesocialBean.valesocial.cpfresp_valesoc}" styleClass="TamanhoM"  required="true" requiredMessage="por favor informe o CPF do responsável">
+      						<p:inputText onfocus="Cpf(this)" value="#{valesocialBean.valesocial.cpfresp_valesoc}" styleClass="TamanhoM">
       							<p:ajax listener="#{valesocialBean.testaCPFResp()}"  />
       						</p:inputText>
       					</div> 
@@ -63,7 +63,7 @@
       					</div>  
 						<div class="ObjetosColuna">
 							<p:outputLabel value="Órgão Emissor" />
-							<p:selectOneMenu value="#{valesocialBean.valesocial.orgaoidt_valesoc}" styleClass="TamanhoSelectMIN" required="true" requiredMessage="por favor informe a identidade ou número do registro de nascimento">
+							<p:selectOneMenu value="#{valesocialBean.valesocial.orgaoidt_valesoc}" styleClass="TamanhoSelectMIN" required="true" requiredMessage="por favor informe o órgão">
 								<f:selectItem itemValue="" itemLabel="" />
 								<f:selectItem itemValue="D" itemLabel="DETRAN" />
 								<f:selectItem itemValue="S" itemLabel="Secretaria de Segurança Pública (SSP)" />
@@ -78,7 +78,7 @@
 					<div class="ObjetosLinha">					
 						<div class="ObjetosColuna">
       						<p:outputLabel value="Nome da Mãe"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.mae_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o nome da mãe"/>
+      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.mae_valesoc}" styleClass="TamanhoM"/>
       					</div>  
       					<div class="ObjetosColuna">
       						<p:outputLabel value="Nome do Pai"/>
@@ -140,49 +140,206 @@
       				</div>	
     			</p:panel>
     			<p:panel header="Entrevista">
-					<div class="ObjetosLinha">  
+    				<p:tabView>
+			        	<p:tab title="Transporte 1">
+			        		<div class="ObjetosLinha">  
+		      					<div class="ObjetosColuna">
+									<p:outputLabel value="Tipo de Transporte Utilizado" />
+									<p:selectOneMenu value="#{valesocialBean.valesocial.tipotransp_valesoc}" styleClass="TamanhoSelectM" required="true" requiredMessage="por favor informe o transporte">
+										<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />
+										<f:selectItem itemValue="T" itemLabel="Trem" />
+										<f:selectItem itemValue="B" itemLabel="Barca" /> 
+										<f:selectItem itemValue="M" itemLabel="Metrô" />									
+									</p:selectOneMenu>
+								</div> 
+							</div>
+		      				<div class="ObjetosLinha">   					
+								<div class="ObjetosColuna">
+		      						<p:outputLabel value="Origem"/>
+		      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe a origem"/>
+		      					</div> 
+		      					<div class="ObjetosColuna">
+		      						<p:outputLabel value="Destino"/>
+		      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o destino"/>
+		      					</div>
+		      				</div>
+			        	</p:tab>	
+			        	<p:tab title="Transporte 2">
+			        		<div class="ObjetosLinha">  
+		      					<div class="ObjetosColuna">
+									<p:outputLabel value="Tipo de Transporte Utilizado" />
+									<p:selectOneMenu value="#{valesocialBean.valesocial.tipotransp2_valesoc}" styleClass="TamanhoSelectM">
+										<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />
+										<f:selectItem itemValue="T" itemLabel="Trem" />
+										<f:selectItem itemValue="B" itemLabel="Barca" /> 
+										<f:selectItem itemValue="M" itemLabel="Metrô" />									
+									</p:selectOneMenu>
+								</div> 
+							</div>
+		      				<div class="ObjetosLinha">   					
+								<div class="ObjetosColuna">
+		      						<p:outputLabel value="Origem"/>
+		      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem2_valesoc}" styleClass="TamanhoM"/>
+		      					</div> 
+		      					<div class="ObjetosColuna">
+		      						<p:outputLabel value="Destino"/>
+		      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino2_valesoc}" styleClass="TamanhoM" />
+		      					</div>
+		      				</div>
+			        	</p:tab>	
+			        	<p:tab title="Transporte 3">
+			        		<div class="ObjetosLinha">  
+		      					<div class="ObjetosColuna">
+									<p:outputLabel value="Tipo de Transporte Utilizado" />
+									<p:selectOneMenu value="#{valesocialBean.valesocial.tipotransp3_valesoc}" styleClass="TamanhoSelectM">
+										<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />
+										<f:selectItem itemValue="T" itemLabel="Trem" />
+										<f:selectItem itemValue="B" itemLabel="Barca" /> 
+										<f:selectItem itemValue="M" itemLabel="Metrô" />									
+									</p:selectOneMenu>
+								</div> 
+							</div>
+		      				<div class="ObjetosLinha">   					
+								<div class="ObjetosColuna">
+		      						<p:outputLabel value="Origem"/>
+		      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem3_valesoc}" styleClass="TamanhoM"/>
+		      					</div> 
+		      					<div class="ObjetosColuna">
+		      						<p:outputLabel value="Destino"/>
+		      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino3_valesoc}" styleClass="TamanhoM" />
+		      					</div>
+		      				</div>
+			        	</p:tab>	        	
+			        </p:tabView>
+	      		</p:panel>
+	      		<p:panel header="SeTrans">
+	      			<div class="ObjetosLinha">
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Requerente"/>
+	     					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.requerente_valesoc}" styleClass="TamanhoM" />
+	   					</div>
+	   				</div>
+					<div class="ObjetosLinha">
+						<div class="ObjetosColuna" style="margin-right: 18px;">
+							<p:outputLabel value="Data Recebido SeTrans" />
+							<p:inputText  onfocus="Data(this)" value="#{valesocialBean.valesocial.recebidosetrans_valesoc}" class="TamanhoMIN"/>								
+						</div>
+						<div class="ObjetosColuna" style="margin-right: 18px;">
+							<p:outputLabel value="Data Analisado SeTrans" />
+							<p:inputText  onfocus="Data(this)" value="#{valesocialBean.valesocial.analisadosetrans_valesoc}" class="TamanhoMIN"/>								
+						</div>
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Resultado SeTrans" />
+							<p:selectOneMenu id="console" value="#{valesocialBean.valesocial.resultadosetrans_valesoc}" class = "TamanhoSelectMIN">
+				    	 		<f:selectItem itemLabel="Deferido" itemValue="D" />
+				    	 		<f:selectItem itemLabel="Indeferido" itemValue="I" />
+		                    </p:selectOneMenu>
+						</div>
+					</div>
+	      		</p:panel>
+	      		
+	      		<p:panel header="Análise Médica">
+	      			<div class="ObjetosLinha">  
       					<div class="ObjetosColuna">
-							<p:outputLabel value="Tipo de Transporte Utilizado" />
-							<p:selectOneMenu value="#{valesocialBean.valesocial.tipotransp_valesoc}" styleClass="TamanhoSelectM" required="true" requiredMessage="por favor informe o transporte">
-								<f:selectItem itemValue="O" itemLabel="Ônibus Intermunicipal" />
-								<f:selectItem itemValue="T" itemLabel="Trem" />
-								<f:selectItem itemValue="B" itemLabel="Barca" /> 
-								<f:selectItem itemValue="M" itemLabel="Metrô" />									
+							<p:outputLabel value="Análise Inicial" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.tipodef_valesoc}" styleClass="TamanhoSelectM">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="D" itemLabel="Deferido" />
+								<f:selectItem itemValue="I" itemLabel="Indeferido" />										
 							</p:selectOneMenu>
 						</div> 
 					</div>
-      				<div class="ObjetosLinha">   					
-						<div class="ObjetosColuna">
-      						<p:outputLabel value="Origem"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe a origem"/>
-      					</div> 
+	      			<div class="ObjetosLinha">  
       					<div class="ObjetosColuna">
-      						<p:outputLabel value="Destino"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino1_valesoc}" styleClass="TamanhoM" required="true" requiredMessage="por favor informe o destino"/>
-      					</div>
-      				</div>
-      				<div class="ObjetosLinha">   					
+							<p:outputLabel value="Tipo de Deficiência" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.tipodef_valesoc}" styleClass="TamanhoSelectM">
+								<f:selectItem itemValue="F" itemLabel="Física" />
+								<f:selectItem itemValue="M" itemLabel="Mental" />
+								<f:selectItem itemValue="V" itemLabel="Visual" /> 
+								<f:selectItem itemValue="A" itemLabel="Auditivo" />
+								<f:selectItem itemValue="D" itemLabel="Doente Crônico" />										
+							</p:selectOneMenu>
+						</div> 
 						<div class="ObjetosColuna">
-      						<p:outputLabel value="Origem"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem2_valesoc}" styleClass="TamanhoM"/>
-      					</div> 
+							<p:outputLabel value="CID"/>
+	     					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.cid_valesoc}" styleClass="TamanhoM" />
+	   					</div>
+					</div>
+					<div class="ObjetosLinha">  
       					<div class="ObjetosColuna">
-      						<p:outputLabel value="Destino"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino2_valesoc}" styleClass="TamanhoM"/>
-      					</div>
-      				</div>
-      				<div class="ObjetosLinha">   					
+							<p:outputLabel value="Análise Inicial" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.tipodef_valesoc}" styleClass="TamanhoSelectM">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="D" itemLabel="Deferido" />
+								<f:selectItem itemValue="I" itemLabel="Indeferido" />										
+							</p:selectOneMenu>
+						</div> 
+					</div>
+	      			<div class="ObjetosLinha">  
+      					<div class="ObjetosColuna">
+							<p:outputLabel value="Exigência" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.exigencia_valesoc}" styleClass="TamanhoSelectM">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="S" itemLabel="Sim" />
+								<f:selectItem itemValue="N" itemLabel="Não" /> 									
+							</p:selectOneMenu>
+						</div> 
 						<div class="ObjetosColuna">
-      						<p:outputLabel value="Origem"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.origem3_valesoc}" styleClass="TamanhoM"/>
-      					</div> 
+							<p:outputLabel value="Motivo"/>
+	     					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.motexigencia_valesoc}" styleClass="TamanhoM" />
+	   					</div>
+					</div>
+	      			<div class="ObjetosLinha">  
       					<div class="ObjetosColuna">
-      						<p:outputLabel value="Destino"/>
-      						<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.destino3_valesoc}" styleClass="TamanhoM"/>
-      					</div>
-      				</div>
-	      		</p:panel>	 
-         			<br/>
+							<p:outputLabel value="Deficiência" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.defpermtrans_valesoc}" styleClass="TamanhoSelectM">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="P" itemLabel="Permanente" />
+								<f:selectItem itemValue="T" itemLabel="Transitória" /> 									
+							</p:selectOneMenu>
+						</div> 
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Acompanhante" />
+							<p:selectOneMenu value="#{valesocialBean.valesocial.acompanhante_valesoc}" styleClass="TamanhoSelectM">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="S" itemLabel="Sim" />
+								<f:selectItem itemValue="N" itemLabel="Não" /> 									
+							</p:selectOneMenu>
+						</div>
+					</div>					
+	      			<div class="ObjetosLinha">  
+      					<div class="ObjetosColuna">
+							<p:outputLabel value="Frequência Mensal Tratamento (vezes)" />
+							<p:inputText onfocus="NumericoInteiroLimite(2)" value="#{valesocialBean.valesocial.frequenciatrat_valesoc}" styleClass="TamanhoM" />
+						</div> 
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Quantidade de vales" />
+							<p:inputText onfocus="NumericoInteiroLimite(3)" value="#{valesocialBean.valesocial.quantvales_valesoc}" styleClass="TamanhoM" />
+						</div>
+					</div>
+	      		</p:panel>
+	      		<p:panel header="Indeferimento">
+	      			<div class="ObjetosLinha">
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Motivo Indeferimento"/>
+	     					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.motindefermed_valesoc}" styleClass="TamanhoM" />
+	   					</div>
+	   				</div>
+	   			</p:panel>
+	   			<p:panel header="Análise Médica">
+	      			<div class="ObjetosLinha">
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Médico Analista"/>
+	     					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.medico_valesoc}" styleClass="TamanhoM" />
+	   					</div>
+						<div class="ObjetosColuna">
+							<p:outputLabel value="Data Análise Médica"/>
+	     					<p:inputText onfocus="Data(this)" value="#{valesocialBean.valesocial.dataanalisemed_valesoc}" styleClass="TamanhoM" />
+	   					</div>
+	   				</div>
+	   			</p:panel>
+	      			 
+         		<br/>
          			
 			    <p:commandButton styleClass="BotaoPrimario" action="#{valesocialBean.cadastrar}" value="Cadastrar" ajax="false" onclick="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />      			
       			

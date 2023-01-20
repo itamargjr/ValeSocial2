@@ -36,7 +36,8 @@ public class ValeSocial {
 	private String recebidosetrans_valesoc;
 	private String resultadosetrans_valesoc;
 	private String analisadosetrans_valesoc;
-	private String tipodef_valesoc;
+	private String analiseinicial_valesoc;
+	private String tipodef_valesoc;	
 	private String cid_valesoc;
 	private String acompanhante_valesoc;
 	private Integer frequenciatrat_valesoc;
@@ -67,11 +68,12 @@ public class ValeSocial {
 			String tipotransp1_valesoc, String origem2_valesoc, String destino2_valesoc, String tipotransp2_valesoc,
 			String origem3_valesoc, String destino3_valesoc, String tipotransp3_valesoc, String enviadosetrans_valesoc,
 			String recebidosetrans_valesoc, String resultadosetrans_valesoc, String analisadosetrans_valesoc,
-			String tipodef_valesoc, String cid_valesoc, String acompanhante_valesoc, Integer frequenciatrat_valesoc,
-			String motindefer_valesoc, String codposto_valesoc, String nomeposto_valesoc, String procsetrans_valesoc,
-			String tiporeq_valesoc, String exigencia_valesoc, String motexigencia_valesoc, String periciamed_valesoc,
-			String defpermtrans_valesoc, Integer quantvales_valesoc, String motindefermed_valesoc,
-			String medico_valesoc, String dataanalisemed_valesoc) {
+			String analiseinicial_valesoc, String tipodef_valesoc, String cid_valesoc, String acompanhante_valesoc,
+			Integer frequenciatrat_valesoc, String motindefer_valesoc, String codposto_valesoc,
+			String nomeposto_valesoc, String procsetrans_valesoc, String tiporeq_valesoc, String exigencia_valesoc,
+			String motexigencia_valesoc, String periciamed_valesoc, String defpermtrans_valesoc,
+			Integer quantvales_valesoc, String motindefermed_valesoc, String medico_valesoc,
+			String dataanalisemed_valesoc) {
 		super();
 		this.id_valesoc = id_valesoc;
 		this.data_valesoc = data_valesoc;
@@ -108,6 +110,7 @@ public class ValeSocial {
 		this.recebidosetrans_valesoc = recebidosetrans_valesoc;
 		this.resultadosetrans_valesoc = resultadosetrans_valesoc;
 		this.analisadosetrans_valesoc = analisadosetrans_valesoc;
+		this.analiseinicial_valesoc = analiseinicial_valesoc;
 		this.tipodef_valesoc = tipodef_valesoc;
 		this.cid_valesoc = cid_valesoc;
 		this.acompanhante_valesoc = acompanhante_valesoc;
@@ -125,6 +128,14 @@ public class ValeSocial {
 		this.motindefermed_valesoc = motindefermed_valesoc;
 		this.medico_valesoc = medico_valesoc;
 		this.dataanalisemed_valesoc = dataanalisemed_valesoc;
+	}
+
+	public String getAnaliseinicial_valesoc() {
+		return analiseinicial_valesoc;
+	}
+
+	public void setAnaliseinicial_valesoc(String analiseinicial_valesoc) {
+		this.analiseinicial_valesoc = analiseinicial_valesoc;
 	}
 
 	public String getExigencia_valesoc() {
@@ -561,14 +572,15 @@ public class ValeSocial {
 				+ ", destino3_valesoc=" + destino3_valesoc + ", tipotransp3_valesoc=" + tipotransp3_valesoc
 				+ ", enviadosetrans_valesoc=" + enviadosetrans_valesoc + ", recebidosetrans_valesoc="
 				+ recebidosetrans_valesoc + ", resultadosetrans_valesoc=" + resultadosetrans_valesoc
-				+ ", analisadosetrans_valesoc=" + analisadosetrans_valesoc + ", tipodef_valesoc=" + tipodef_valesoc
-				+ ", cid_valesoc=" + cid_valesoc + ", acompanhante_valesoc=" + acompanhante_valesoc
-				+ ", frequenciatrat_valesoc=" + frequenciatrat_valesoc + ", motindefer_valesoc=" + motindefer_valesoc
-				+ ", codposto_valesoc=" + codposto_valesoc + ", nomeposto_valesoc=" + nomeposto_valesoc
-				+ ", procsetrans_valesoc=" + procsetrans_valesoc + ", tiporeq_valesoc=" + tiporeq_valesoc
-				+ ", exigencia_valesoc=" + exigencia_valesoc + ", motexigencia_valesoc=" + motexigencia_valesoc
-				+ ", periciamed_valesoc=" + periciamed_valesoc + ", defpermtrans_valesoc=" + defpermtrans_valesoc
-				+ ", quantvales_valesoc=" + quantvales_valesoc + ", motindefermed_valesoc=" + motindefermed_valesoc
-				+ ", medico_valesoc=" + medico_valesoc + ", dataanalisemed_valesoc=" + dataanalisemed_valesoc + "]";
+				+ ", analisadosetrans_valesoc=" + analisadosetrans_valesoc + ", analiseinicial_valesoc="
+				+ analiseinicial_valesoc + ", tipodef_valesoc=" + tipodef_valesoc + ", cid_valesoc=" + cid_valesoc
+				+ ", acompanhante_valesoc=" + acompanhante_valesoc + ", frequenciatrat_valesoc="
+				+ frequenciatrat_valesoc + ", motindefer_valesoc=" + motindefer_valesoc + ", codposto_valesoc="
+				+ codposto_valesoc + ", nomeposto_valesoc=" + nomeposto_valesoc + ", procsetrans_valesoc="
+				+ procsetrans_valesoc + ", tiporeq_valesoc=" + tiporeq_valesoc + ", exigencia_valesoc="
+				+ exigencia_valesoc + ", motexigencia_valesoc=" + motexigencia_valesoc + ", periciamed_valesoc="
+				+ periciamed_valesoc + ", defpermtrans_valesoc=" + defpermtrans_valesoc + ", quantvales_valesoc="
+				+ quantvales_valesoc + ", motindefermed_valesoc=" + motindefermed_valesoc + ", medico_valesoc="
+				+ medico_valesoc + ", dataanalisemed_valesoc=" + dataanalisemed_valesoc + "]";
 	}
 }

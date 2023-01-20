@@ -52,11 +52,11 @@ public class ValeSocialDao extends Dao {
                       "uf_valesoc, telefone_valesoc, celular_valesoc, tipotransp_valesoc, origem1_valesoc, " + 
                       "destino1_valesoc, tipotransp1_valesoc, origem2_valesoc, destino2_valesoc, tipotransp2_valesoc, " + 
                       "origem3_valesoc, destino3_valesoc, tipotransp3_valesoc, enviadosetrans_valesoc, " + 
-                      "recebidosetrans_valesoc, resultadosetrans_valesoc, analisadosetrans_valesoc, tipodef_valesoc, " + 
+                      "recebidosetrans_valesoc, resultadosetrans_valesoc, analisadosetrans_valesoc, analiseinicial_valesoc, tipodef_valesoc, " + 
                       "cid_valesoc, acompanhante_valesoc, frequenciatrat_valesoc, motindefer_valesoc, codposto_valesoc, " + 
                       "nomeposto_valesoc, procsetrans_valesoc, tiporeq_valesoc) values " +
 					  "(null, DATE_FORMAT(sysdate(),'%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-					  " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
+					  " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
 	
 		
 	
@@ -97,21 +97,22 @@ public class ValeSocialDao extends Dao {
 		stmt.setString(31, vs.getRecebidosetrans_valesoc());
 		stmt.setString(32, vs.getResultadosetrans_valesoc());
 		stmt.setString(33, vs.getAnalisadosetrans_valesoc());
-		stmt.setString(34, vs.getTipodef_valesoc());
-		stmt.setString(35, vs.getCid_valesoc());
-		stmt.setString(36, vs.getAcompanhante_valesoc());
+		stmt.setString(34, vs.getAnaliseinicial_valesoc());
+		stmt.setString(35, vs.getTipodef_valesoc());
+		stmt.setString(36, vs.getCid_valesoc());
+		stmt.setString(37, vs.getAcompanhante_valesoc());
 		
 		if ((vs.getFrequenciatrat_valesoc()==null)||(vs.getFrequenciatrat_valesoc()==0)) {
-			stmt.setNull(37, Types.INTEGER);
+			stmt.setNull(38, Types.INTEGER);
 		} else {
-			stmt.setInt(37, vs.getFrequenciatrat_valesoc());
+			stmt.setInt(38, vs.getFrequenciatrat_valesoc());
 		}		
 		
-		stmt.setString(38, vs.getMotindefer_valesoc());
-		stmt.setString(39, vs.getCodposto_valesoc());
-		stmt.setString(40, vs.getNomeposto_valesoc());
-		stmt.setString(41, vs.getProcsetrans_valesoc());
-		stmt.setString(42, vs.getTiporeq_valesoc());
+		stmt.setString(39, vs.getMotindefer_valesoc());
+		stmt.setString(40, vs.getCodposto_valesoc());
+		stmt.setString(41, vs.getNomeposto_valesoc());
+		stmt.setString(42, vs.getProcsetrans_valesoc());
+		stmt.setString(43, vs.getTiporeq_valesoc());
 
 		stmt.executeUpdate();
 
@@ -156,7 +157,7 @@ public class ValeSocialDao extends Dao {
 		"  destino2_valesoc, tipotransp2_valesoc, origem3_valesoc, " +
 		"  destino3_valesoc, tipotransp3_valesoc, enviadosetrans_valesoc, " +
 		"  recebidosetrans_valesoc, resultadosetrans_valesoc, " +
-		"  analisadosetrans_valesoc, " +
+		"  analisadosetrans_valesoc, analiseinicial_valesoc, " +
 		"  case " +
 		"    when resultadosetrans_valesoc = 'D' Then 'DEFERIDO' " +
 		"    when resultadosetrans_valesoc = 'I' Then 'INDEFERIDO' " +
@@ -250,6 +251,7 @@ public class ValeSocialDao extends Dao {
 					rs.getString("recebidosetrans_valesoc"),
 					rs.getString("resultadosetrans_valesoc"),
 					rs.getString("analisadosetrans_valesoc"),
+					rs.getString("analiseinicial_valesoc"),
 					rs.getString("tipodef_valesoc"),
 					rs.getString("cid_valesoc"),
 					rs.getString("acompanhante_valesoc"),
@@ -315,7 +317,7 @@ public class ValeSocialDao extends Dao {
 		"  destino2_valesoc, tipotransp2_valesoc, origem3_valesoc, " +
 		"  destino3_valesoc, tipotransp3_valesoc, enviadosetrans_valesoc, " +
 		"  recebidosetrans_valesoc, resultadosetrans_valesoc, " +
-		"  analisadosetrans_valesoc, " +
+		"  analisadosetrans_valesoc, analiseinicial_valesoc, " +
 		"  case " +
 		"    when resultadosetrans_valesoc = 'D' Then 'DEFERIDO' " +
 		"    when resultadosetrans_valesoc = 'I' Then 'INDEFERIDO' " +
@@ -382,6 +384,7 @@ public class ValeSocialDao extends Dao {
 					rs.getString("recebidosetrans_valesoc"),
 					rs.getString("resultadosetrans_valesoc"),
 					rs.getString("analisadosetrans_valesoc"),
+					rs.getString("analiseinicial_valesoc"),
 					rs.getString("tipodef_valesoc"),
 					rs.getString("cid_valesoc"),
 					rs.getString("acompanhante_valesoc"),
