@@ -54,9 +54,13 @@ public class ValeSocialDao extends Dao {
                       "origem3_valesoc, destino3_valesoc, tipotransp3_valesoc, enviadosetrans_valesoc, " + 
                       "recebidosetrans_valesoc, resultadosetrans_valesoc, analisadosetrans_valesoc, analiseinicial_valesoc, tipodef_valesoc, " + 
                       "cid_valesoc, acompanhante_valesoc, frequenciatrat_valesoc, motindefer_valesoc, codposto_valesoc, " + 
-                      "nomeposto_valesoc, procsetrans_valesoc, tiporeq_valesoc) values " +
+                      "nomeposto_valesoc, procsetrans_valesoc, tiporeq_valesoc, " +
+                      "exigencia_valesoc, motexigencia_valesoc, periciamed_valesoc, defpermtrans_valesoc, " + 
+                      "quantvales_valesoc, motindefermed_valesoc, " +
+                      "medico_valesoc, dataanalisemed_valesoc, " + 
+                      ") values " +
 					  "(null, DATE_FORMAT(sysdate(),'%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-					  " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
+					  " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
 	
 		
 	
@@ -113,6 +117,105 @@ public class ValeSocialDao extends Dao {
 		stmt.setString(41, vs.getNomeposto_valesoc());
 		stmt.setString(42, vs.getProcsetrans_valesoc());
 		stmt.setString(43, vs.getTiporeq_valesoc());
+
+		stmt.executeUpdate();
+
+	}
+	
+	public void gravaredicao(ValeSocial vs) throws Exception{	
+		
+		open();	
+		
+		String smtp = "update " +
+		              "  cid_valesocial " +
+				      "set " +
+		              "  requerente_valesoc = ?, " +
+				      "  sexo_valesoc = ?, " +
+		              "  nascimento_valesoc = ?, " + 
+                      "  cpf_valesoc = ?, cpfresp_valesoc = ?, nomeresp_valesoc = ?, " +
+		              "  pai_valesoc = ?, mae_valesoc = ?, identidade_valesoc = ?, orgaoidt_valesoc = ?, " + 
+                      "  logradouro_valesoc = ?, numero_valesoc = ?, complemento_valesoc = ?, bairro_valesoc = ?, cidade_valesoc = ?, cep_valesoc = ?, " + 
+                      "  uf_valesoc = ?, telefone_valesoc = ?, celular_valesoc = ?, tipotransp_valesoc = ?, origem1_valesoc = ?, " + 
+                      "  destino1_valesoc = ?, tipotransp1_valesoc = ?, origem2_valesoc = ?, destino2_valesoc = ?, tipotransp2_valesoc = ?, " + 
+                      "  origem3_valesoc = ?, destino3_valesoc = ?, tipotransp3_valesoc = ?, enviadosetrans_valesoc = ?, " + 
+                      "  recebidosetrans_valesoc = ?, resultadosetrans_valesoc = ?, analisadosetrans_valesoc = ?, analiseinicial_valesoc = ?, tipodef_valesoc = ?, " + 
+                      "  cid_valesoc = ?, acompanhante_valesoc = ?, frequenciatrat_valesoc = ?, motindefer_valesoc = ?, codposto_valesoc = ?, " + 
+                      "  nomeposto_valesoc = ?, procsetrans_valesoc = ?, tiporeq_valesoc = ?, " +
+                      "  exigencia_valesoc = ?, motexigencia_valesoc = ?, periciamed_valesoc = ?, defpermtrans_valesoc = ?, " + 
+                      "  quantvales_valesoc = ?, motindefermed_valesoc = ?, " +
+                      "  medico_valesoc = ?, dataanalisemed_valesoc = ?, " + 
+                      "where " +
+                      "  id_valesoc = ? ";	
+	
+		
+	
+		stmt = con.prepareStatement(smtp);
+
+
+		stmt.setString(1, vs.getRequerente_valesoc());
+		stmt.setString(2, vs.getSexo_valesoc());
+		stmt.setString(3, vs.getNascimento_valesoc());
+		stmt.setString(4, vs.getCpf_valesoc());
+		stmt.setString(5, vs.getCpfresp_valesoc());
+		stmt.setString(6, vs.getNomeresp_valesoc());
+		stmt.setString(7, vs.getPai_valesoc());
+		stmt.setString(8, vs.getMae_valesoc());
+		stmt.setString(9, vs.getIdentidade_valesoc());
+		stmt.setString(10, vs.getOrgaoidt_valesoc());
+		stmt.setString(11, vs.getLogradouro_valesoc());
+		stmt.setString(12, vs.getNumero_valesoc());
+		stmt.setString(13, vs.getComplemento_valesoc());
+		stmt.setString(14, vs.getBairro_valesoc());
+		stmt.setString(15, vs.getCidade_valesoc());
+		stmt.setString(16, vs.getCep_valesoc());
+		stmt.setString(17, vs.getUf_valesoc());
+		stmt.setString(18, vs.getTelefone_valesoc());
+		stmt.setString(19, vs.getCelular_valesoc());
+		stmt.setString(20, vs.getTipotransp_valesoc());
+		stmt.setString(21, vs.getOrigem1_valesoc());
+		stmt.setString(22, vs.getDestino1_valesoc());
+		stmt.setString(23, vs.getTipotransp1_valesoc());
+		stmt.setString(24, vs.getOrigem2_valesoc());
+		stmt.setString(25, vs.getDestino2_valesoc());
+		stmt.setString(26, vs.getTipotransp2_valesoc());
+		stmt.setString(27, vs.getOrigem3_valesoc());
+		stmt.setString(28, vs.getDestino3_valesoc());
+		stmt.setString(29, vs.getTipotransp3_valesoc());
+		stmt.setString(30, vs.getEnviadosetrans_valesoc());
+		stmt.setString(31, vs.getRecebidosetrans_valesoc());
+		stmt.setString(32, vs.getResultadosetrans_valesoc());
+		stmt.setString(33, vs.getAnalisadosetrans_valesoc());
+		stmt.setString(34, vs.getAnaliseinicial_valesoc());
+		stmt.setString(35, vs.getTipodef_valesoc());
+		stmt.setString(36, vs.getCid_valesoc());
+		stmt.setString(37, vs.getAcompanhante_valesoc());
+		
+		if ((vs.getFrequenciatrat_valesoc()==null)||(vs.getFrequenciatrat_valesoc()==0)) {
+			stmt.setNull(38, Types.INTEGER);
+		} else {
+			stmt.setInt(38, vs.getFrequenciatrat_valesoc());
+		}		
+		
+		stmt.setString(39, vs.getMotindefer_valesoc());
+		stmt.setString(40, vs.getCodposto_valesoc());
+		stmt.setString(41, vs.getNomeposto_valesoc());
+		stmt.setString(42, vs.getProcsetrans_valesoc());
+		stmt.setString(43, vs.getTiporeq_valesoc());
+		stmt.setString(44, vs.getExigencia_valesoc());
+		stmt.setString(45, vs.getMotexigencia_valesoc());
+		stmt.setString(46, vs.getPericiamed_valesoc());
+		stmt.setString(47, vs.getDefpermtrans_valesoc());
+		
+		if ((vs.getQuantvales_valesoc()==null)||(vs.getQuantvales_valesoc()==0)) {
+			stmt.setNull(48, Types.INTEGER);
+		} else {
+			stmt.setInt(48, vs.getQuantvales_valesoc());
+		}
+
+		stmt.setString(49, vs.getMotindefermed_valesoc());
+		stmt.setString(50, vs.getMedico_valesoc());
+		stmt.setString(51, vs.getDataanalisemed_valesoc());
+		stmt.setInt(52, vs.getId_valesoc());
 
 		stmt.executeUpdate();
 

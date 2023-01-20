@@ -109,6 +109,25 @@ public class ValesocialBean {
 		}		
 	}
 	
+	public void gravaredicao() {
+		
+		try {
+			
+			ValeSocialDao vd  = new ValeSocialDao();
+			
+			vd.gravaredicao(valesocial);
+			
+			valesocial = new ValeSocial();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Requerimento gravado com sucesso", ""));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}		
+	}
+	
 	public void buscar() {
 		try {
 			
@@ -191,6 +210,10 @@ public class ValesocialBean {
 	
 	public void abrirdialogoenviosetrans() {
 		PrimeFaces.current().executeScript("PF('dialogoenviosetrans').show();");		
+	}
+	
+	public void abrirdialogoeditar() {
+		PrimeFaces.current().executeScript("PF('dialogoeditar').show();");		
 	}
 	
 	public void confirmarenviosetrans() {
