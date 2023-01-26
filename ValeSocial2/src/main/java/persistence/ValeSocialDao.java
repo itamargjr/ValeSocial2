@@ -45,22 +45,42 @@ public class ValeSocialDao extends Dao {
 		open();	
 		
 		String smtp = "INSERT INTO cid_valesocial (id_valesoc, data_valesoc, " +
-		              "requerente_valesoc, sexo_valesoc, nascimento_valesoc, " + 
-                      "cpf_valesoc, cpfresp_valesoc, nomeresp_valesoc, " +
-		              "pai_valesoc, mae_valesoc, identidade_valesoc, orgaoidt_valesoc, " + 
-                      "logradouro_valesoc, numero_valesoc, complemento_valesoc, bairro_valesoc, cidade_valesoc, cep_valesoc, " + 
-                      "uf_valesoc, telefone_valesoc, celular_valesoc, tipotransp_valesoc, origem1_valesoc, " + 
-                      "destino1_valesoc, tipotransp1_valesoc, origem2_valesoc, destino2_valesoc, tipotransp2_valesoc, " + 
-                      "origem3_valesoc, destino3_valesoc, tipotransp3_valesoc, enviadosetrans_valesoc, " + 
-                      "recebidosetrans_valesoc, resultadosetrans_valesoc, analisadosetrans_valesoc, analiseinicial_valesoc, tipodef_valesoc, " + 
+		
+		              "requerente_valesoc, sexo_valesoc, nascimento_valesoc, cpf_valesoc, cpfresp_valesoc, " + 
+		              
+                      "nomeresp_valesoc, pai_valesoc, mae_valesoc, identidade_valesoc, orgaoidt_valesoc, " + 
+                      
+                      "logradouro_valesoc, numero_valesoc, complemento_valesoc, bairro_valesoc, cidade_valesoc, " + 
+                      
+                      "cep_valesoc, uf_valesoc, telefone_valesoc, celular_valesoc, tipotransp_valesoc, " + 
+                      
+                      "origem1_valesoc, destino1_valesoc, tipotransp1_valesoc, origem2_valesoc, destino2_valesoc, " + 
+                      
+                      "tipotransp2_valesoc, origem3_valesoc, destino3_valesoc, tipotransp3_valesoc, enviadosetrans_valesoc, " + 
+                      
+                      "recebidosetrans_valesoc, resultadosetrans_valesoc, analisadosetrans_valesoc, analiseinicial_valesoc, tipodef_valesoc, " +
+                      
                       "cid_valesoc, acompanhante_valesoc, frequenciatrat_valesoc, motindefer_valesoc, codposto_valesoc, " + 
-                      "nomeposto_valesoc, procsetrans_valesoc, tiporeq_valesoc, " +
-                      "exigencia_valesoc, motexigencia_valesoc, periciamed_valesoc, defpermtrans_valesoc, " + 
-                      "quantvales_valesoc, motindefermed_valesoc, " +
-                      "medico_valesoc, dataanalisemed_valesoc, " + 
+                      
+                      "nomeposto_valesoc, procsetrans_valesoc, tiporeq_valesoc, exigencia_valesoc, motexigencia_valesoc, " +
+                      
+                      "periciamed_valesoc, defpermtrans_valesoc, quantvales_valesoc, motindefermed_valesoc, medico_valesoc, " +
+                      
+                      "dataanalisemed_valesoc " + 
+                      
                       ") values " +
-					  "(null, DATE_FORMAT(sysdate(),'%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-					  " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
+					  "(null, DATE_FORMAT(sysdate(),'%d/%m/%Y'), " +
+                      "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " + 
+                      "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?, ?, ?, ?, ?, " +
+					  "?)";	
 	
 		
 	
@@ -72,8 +92,19 @@ public class ValeSocialDao extends Dao {
 		stmt.setString(2, vs.getSexo_valesoc());
 		stmt.setString(3, vs.getNascimento_valesoc());
 		stmt.setString(4, vs.getCpf_valesoc());
-		stmt.setString(5, vs.getCpfresp_valesoc());
-		stmt.setString(6, vs.getNomeresp_valesoc());
+		
+		if (vs.getCpfresp_valesoc()==null) {
+			stmt.setString(5, vs.getCpf_valesoc());
+		} else {
+			stmt.setString(5, vs.getCpfresp_valesoc());
+		}
+		
+		if (vs.getNomeresp_valesoc()==null) {
+			stmt.setString(6, vs.getRequerente_valesoc());
+		} else {
+			stmt.setString(6, vs.getNomeresp_valesoc());
+		}		
+		
 		stmt.setString(7, vs.getPai_valesoc());
 		stmt.setString(8, vs.getMae_valesoc());
 		stmt.setString(9, vs.getIdentidade_valesoc());
@@ -114,9 +145,25 @@ public class ValeSocialDao extends Dao {
 		
 		stmt.setString(39, vs.getMotindefer_valesoc());
 		stmt.setString(40, vs.getCodposto_valesoc());
+		
 		stmt.setString(41, vs.getNomeposto_valesoc());
 		stmt.setString(42, vs.getProcsetrans_valesoc());
 		stmt.setString(43, vs.getTiporeq_valesoc());
+		
+		stmt.setString(44, vs.getExigencia_valesoc()); 
+		stmt.setString(45, vs.getMotexigencia_valesoc()); 
+		stmt.setString(46, vs.getPericiamed_valesoc()); 
+		stmt.setString(47, vs.getDefpermtrans_valesoc()); 
+		
+		if (vs.getQuantvales_valesoc()==null) {
+			stmt.setNull(48, Types.INTEGER);
+		} else {
+			stmt.setInt(48, vs.getQuantvales_valesoc()); 
+		}		
+		
+		stmt.setString(49, vs.getMotindefermed_valesoc()); 
+		stmt.setString(50, vs.getMedico_valesoc()); 
+		stmt.setString(51, vs.getDataanalisemed_valesoc());
 
 		stmt.executeUpdate();
 
