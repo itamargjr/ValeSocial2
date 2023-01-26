@@ -155,7 +155,7 @@ public class ValesocialBean {
 
 			try{	
 	
-				valesociallista = new ValeSocialDao().findAll(valesocial);
+				valesociallista = new ValeSocialDao().findAllImpressao(valesocial);
 
 				if(valesociallista.size()==0) {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ficha não encontrada", "")); // passa a mensagem

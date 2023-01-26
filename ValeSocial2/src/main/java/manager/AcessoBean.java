@@ -259,6 +259,8 @@ public class AcessoBean implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		Integer usulog = (Integer) session.getAttribute("idusulogado");
 		
+		System.out.println(usulog);
+		
 		//System.out.println("usulog:" + usulog);
 		
 		if (usulog !=null) {
@@ -266,6 +268,8 @@ public class AcessoBean implements Serializable {
 				usulog = null;
 			}
 		}
+		
+		System.out.println(usulog);
 		
 		return usulog !=null;
 	}
