@@ -87,6 +87,8 @@ public class ValeSocialDao extends Dao {
 		stmt = con.prepareStatement(smtp);
 	
 	//System.out.println(Biblioteca.LimpaStringCaracterSpecial(escola.getCnpj_escola()));
+		
+		//System.out.println(vs);
 
 		stmt.setString(1, vs.getRequerente_valesoc());
 		stmt.setString(2, vs.getSexo_valesoc());
@@ -197,6 +199,8 @@ public class ValeSocialDao extends Dao {
 		
 	
 		stmt = con.prepareStatement(smtp);
+		
+		//System.out.println(vs);
 
 
 		stmt.setString(1, vs.getRequerente_valesoc());
