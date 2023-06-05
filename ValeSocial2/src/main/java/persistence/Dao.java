@@ -26,7 +26,8 @@ public class Dao {
 //	private final String USER = "u145949539_admin";
 //	private final String PASS = "EducaNilopolis2021*/";
 	
-	private final String URL = "jdbc:mysql://207.244.230.138:3306/x2plataf_sistemas"; // URL Integrator
+//	private final String URL = "jdbc:mysql://207.244.230.138:3306/x2plataf_sistemas"; // URL Integrator
+	private final String URL = "jdbc:mysql://localhost:3306/x2plataf_sistemas"; // URL Integrator
 	
 	private final String USER = "x2plataf_admin";
 	private final String PASS = "EducaNilopolis2021*/";
