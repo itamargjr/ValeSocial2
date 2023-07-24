@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+<ui:composition template="#{paginasBean._template}">  
+    <ui:define name="corpo">
+    
+    	<p:messages />  	
+			
+		<p:panel header="Consultar Todos os Requerimentos">
+		
+			<h:form id="formpesquisa">
+      			<div class="ObjetosLinha">  	
+	      			<div class="ObjetosColuna">
+						<p:outputLabel value="Cpf do Requerente"/>
+      					<p:inputText onfocus="Cpf(this)" value="#{valesocialBean.valesocial.cpf_valesoc}" styleClass="TamanhoP" />
+      				</div> 
+      				<div class="ObjetosColuna">
+						<p:outputLabel value="Nome do Requerente"/>
+      					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.requerente_valesoc}" styleClass="TamanhoM" />
+      				</div>        				    				   		
+      			</div>
+				<div class="ObjetosLinha">
+					<div class="ObjetosColuna">
+      					<p:outputLabel value="Nome do Responsável"/>
+      					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.nomeresp_valesoc}" styleClass="TamanhoP" />
+      				</div> 
+					<div class="ObjetosColuna">
+      					<p:outputLabel value="CPF do Responsável"/>
+      					<p:inputText onfocus="Cpf(this)" value="#{valesocialBean.valesocial.cpfresp_valesoc}" styleClass="TamanhoM" />
+      				</div>
+					<div class="ObjetosColuna">
+						<p:outputLabel value="Bairro" />
+						<p:selectOneMenu value="#{valesocialBean.valesocial.bairro_valesoc}" styleClass="TamanhoSelectMIN">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="Bairro da Mina" itemLabel="Bairro da Mina" />
+							<f:selectItem itemValue="Cabral" itemLabel="Cabral" /> 
+							<f:selectItem itemValue="Cabuis" itemLabel="Cabuis" />
+							<f:selectItem itemValue="Centro" itemLabel="Centro" />
+							<f:selectItem itemValue="Frigorífico" itemLabel="Frigorífico" />
+							<f:selectItem itemValue="Manoel Reis" itemLabel="Manoel Reis" />
+							<f:selectItem itemValue="N. S. de Fátima" itemLabel="N. S. de Fátima" />
+							<f:selectItem itemValue="Nova Cidade" itemLabel="Nova Cidade" />
+							<f:selectItem itemValue="Novo Horizonte" itemLabel="Novo Horizonte" />
+							<f:selectItem itemValue="Olinda" itemLabel="Olinda" />
+							<f:selectItem itemValue="Paiol" itemLabel="Paiol" />
+							<f:selectItem itemValue="Santos Dumont" itemLabel="Santos Dumont" />
+							<f:selectItem itemValue="Tropical" itemLabel="Tropical" />
+							<f:selectItem itemValue="Outro" itemLabel="Outro" />								
+						</p:selectOneMenu>
+					</div> 
+				</div>
+				<div class="ObjetosLinha">
+					<div class="ObjetosColuna">
+						<p:outputLabel value="Nome do Posto"/>
+      					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.nomeposto_valesoc}" styleClass="TamanhoP" />
+      				</div>
+      				<div class="ObjetosColuna">
+						<p:outputLabel value="Código Posto"/>
+      					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.codposto_valesoc}" styleClass="TamanhoPP" />
+      				</div>	
+      				<div class="ObjetosColuna">
+						<p:outputLabel value="Código Processo"/>
+      					<p:inputText onfocus="StringMaiuscula(this, -1)" value="#{valesocialBean.valesocial.procsetrans_valesoc}" styleClass="TamanhoPP" />
+      				</div>	      				
+      			</div>
+				<div class="ObjetosLinha">
+					<div class="ObjetosColuna">
+						<p:outputLabel value="Nascimento - Início" />
+						<p:inputText onfocus="Data(this)" value="#{valesocialBean.valesocial.datanasc_ini}" class="TamanhoPP"/>
+					</div>
+					<div class="ObjetosColuna">
+						<p:outputLabel value="Nascimento - Fim" />
+						<p:inputText onfocus="Data(this)" value="#{valesocialBean.valesocial.datanasc_fim}" class="TamanhoPP"/>
+					</div>      				
+      			</div>
+      			
+      			<br/>
+         			
+		     	<p:commandButton styleClass="BotaoPrimario" 
+		     	                 action="#{valesocialBean.buscar}" 
+		     	                 value="Buscar Requerimentos" ajax="false" 
+		     	                 update=":formpesquisa :formlista :formcadastro" 
+		     	                 onclick="PF('statusDialog').show()" 
+		     	                 onsuccess="PF('statusDialog').hide()" />
+      			 			
+			</h:form>
+		</p:panel>
+		
+		<hr/>
+		
+    	<h:form id="formlista">   	    		
+    	
+    		<p:panel rendered="#{valesocialBean.valesociallista.size() gt 0}">	
+
+    			<p:dataTable value="#{valesocialBean.valesociallista}" var="vs" id="dataTableDetalhe" rows="20" paginator="true" 
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}{RowsPerPageDropdown} {Exporters}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,15">
+                 
+                 	<f:facet name="{Exporters}">
+			            <div>
+			                <h:commandLink>
+			                    <p:graphicImage name="excel.png" library="imagens" width="16"/>
+			                    <p:dataExporter type="xls" target="dataTableDetalhe" fileName="Requerimentos" />
+			                </h:commandLink>                        
+			            </div>
+			        </f:facet>
+
+					<p:column headerText="Data">
+						<p:outputLabel value="#{vs.data_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="Requerente" sortBy="#{vs.requerente_valesoc}">
+						<p:outputLabel value="#{vs.requerente_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="CID">
+						<p:outputLabel value="#{vs.cid_valesoc}"/>
+					</p:column>
+						
+					<p:column headerText="Nascimento">
+						<p:outputLabel value="#{vs.nascimento_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="Celular">
+   						<p:outputLabel value="#{vs.celular_valesoc}" />
+   					</p:column>
+					
+					<p:column headerText="Transporte">
+   						<p:outputLabel value="#{vs.tipotransp_valesoc}" />
+   					</p:column>
+					
+					<p:column headerText="Responsável">
+						<p:outputLabel value="#{vs.nomeresp_valesoc}"/>
+					</p:column> 			
+					
+					<p:column headerText="Posto">
+						<p:outputLabel value="#{vs.nomeposto_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="Processo">
+						<p:outputLabel value="#{vs.procsetrans_valesoc}"/>
+					</p:column>
+				
+					<p:column headerText="Enviado">
+						<p:outputLabel value="#{vs.enviadosetrans_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="Recebido">
+						<p:outputLabel value="#{vs.recebidosetrans_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="Analisado">
+						<p:outputLabel value="#{vs.analisadosetrans_valesoc}"/>
+					</p:column>
+					
+					<p:column headerText="Resultado">
+						<p:outputLabel value="#{vs.resultadosetrans_valesoc eq 'D' ? 'DEFERIDO' : (vs.resultadosetrans_valesoc eq 'I' ? 'Indeferido' : '-')}"/>
+					</p:column>
+					
+					<p:column headerText="Exigência">
+						<p:outputLabel value="#{vs.motexigencia_valesoc}"/>
+					</p:column>
+				</p:dataTable>
+			</p:panel>	
+      	</h:form>   	  	
+    </ui:define>
+  </ui:composition>   
+</html>

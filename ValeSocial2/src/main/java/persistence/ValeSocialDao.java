@@ -477,6 +477,14 @@ public class ValeSocialDao extends Dao {
 			statement = statement + " and requerente_valesoc like '%" + vs.getRequerente_valesoc() + "%'";
 		}
 		
+		if ((vs.getTipotransp_valesoc()!=null)&&(!vs.getTipotransp_valesoc().equalsIgnoreCase(""))) {
+			statement = statement + " and tipotransp_valesoc = '" + vs.getTipotransp_valesoc() + "'";
+		}
+		
+		if ((vs.getSexo_valesoc()!=null)&&(!vs.getSexo_valesoc().equalsIgnoreCase(""))) {
+			statement = statement + " and sexo_valesoc = '" + vs.getSexo_valesoc() + "'";
+		}
+		
 		if ((vs.getCpf_valesoc()!=null)&&(!vs.getCpf_valesoc().equalsIgnoreCase(""))) {
 			statement = statement + " and cpf_valesoc = '" + vs.getCpf_valesoc() + "'";
 		}
@@ -495,6 +503,20 @@ public class ValeSocialDao extends Dao {
 		
 		if ((vs.getNomeposto_valesoc()!=null)&&(!vs.getNomeposto_valesoc().equalsIgnoreCase(""))) {
 			statement = statement + " and nomeposto_valesoc like '%" + vs.getNomeposto_valesoc() + "'";
+		}
+		
+		if (vs.getDatanasc_ini()==null) {
+			vs.setDatanasc_ini("");
+		}
+		
+		if (vs.getDatanasc_fim()==null) {
+			vs.setDatanasc_fim("");
+		}
+		
+		if ((vs.getDatanasc_ini()!=null) && (vs.getDatanasc_fim()!=null) && (!vs.getDatanasc_ini().equalsIgnoreCase("")) && (!vs.getDatanasc_fim().equalsIgnoreCase(""))) {
+			statement = statement + " and str_to_date(nascimento_valesoc, '%d/%c/%Y') between str_to_date('" + vs.getDatanasc_ini() + "', '%d/%c/%Y') and str_to_date('" + vs.getDatanasc_fim() + "', '%d/%c/%Y')";					
+		} else if (!vs.getDatanasc_ini().equalsIgnoreCase("")) {
+			statement = statement + " and str_to_date(nascimento_valesoc, '%d/%c/%Y') = str_to_date('" + vs.getDatanasc_ini() + "', '%d/%c/%Y')";	
 		}
 		
 		stmt = con.prepareStatement(statement);

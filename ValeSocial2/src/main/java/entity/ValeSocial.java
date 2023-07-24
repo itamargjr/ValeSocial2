@@ -54,6 +54,9 @@ public class ValeSocial {
     private String motindefermed_valesoc;
     private String medico_valesoc;
     private String dataanalisemed_valesoc;
+    
+    private String datanasc_ini;
+    private String datanasc_fim;
 	
 	public ValeSocial() {
 		super();
@@ -128,6 +131,22 @@ public class ValeSocial {
 		this.motindefermed_valesoc = motindefermed_valesoc;
 		this.medico_valesoc = medico_valesoc;
 		this.dataanalisemed_valesoc = dataanalisemed_valesoc;
+	}
+
+	public String getDatanasc_ini() {
+		return datanasc_ini;
+	}
+
+	public void setDatanasc_ini(String datanasc_ini) {
+		this.datanasc_ini = datanasc_ini;
+	}
+
+	public String getDatanasc_fim() {
+		return datanasc_fim;
+	}
+
+	public void setDatanasc_fim(String datanasc_fim) {
+		this.datanasc_fim = datanasc_fim;
 	}
 
 	public String getAnaliseinicial_valesoc() {
@@ -581,6 +600,7 @@ public class ValeSocial {
 				+ exigencia_valesoc + ", motexigencia_valesoc=" + motexigencia_valesoc + ", periciamed_valesoc="
 				+ periciamed_valesoc + ", defpermtrans_valesoc=" + defpermtrans_valesoc + ", quantvales_valesoc="
 				+ quantvales_valesoc + ", motindefermed_valesoc=" + motindefermed_valesoc + ", medico_valesoc="
-				+ medico_valesoc + ", dataanalisemed_valesoc=" + dataanalisemed_valesoc + "]";
+				+ medico_valesoc + ", dataanalisemed_valesoc=" + dataanalisemed_valesoc + ", datanasc_ini="
+				+ datanasc_ini + ", datanasc_fim=" + datanasc_fim + "]";
 	}
 }

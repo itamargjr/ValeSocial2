@@ -141,7 +141,7 @@
 					</p:column>
 					
 					<p:column headerText="Resultado">
-						<p:outputLabel value="#{vs.resultadosetrans_valesoc eq 'D' ? 'DEFERIDO' : 'Indeferido'}"/>
+						<p:outputLabel value="#{vs.resultadosetrans_valesoc eq 'D' ? 'DEFERIDO' : (vs.resultadosetrans_valesoc eq 'I' ? 'Indeferido' : '-')}"/>
 					</p:column>
 					
 					<p:column>
@@ -355,7 +355,7 @@
 		      			<div class="ObjetosLinha">  
 	      					<div class="ObjetosColuna">
 								<p:outputLabel value="Análise Inicial" />
-								<p:selectOneMenu value="#{valesocialBean.valesocial.tipodef_valesoc}" styleClass="TamanhoSelectM" disabled="true">
+								<p:selectOneMenu value="#{valesocialBean.valesocial.analiseinicial_valesoc}" styleClass="TamanhoSelectM" disabled="true">
 									<f:selectItem itemValue="" itemLabel="" />
 									<f:selectItem itemValue="D" itemLabel="Deferido" />
 									<f:selectItem itemValue="I" itemLabel="Indeferido" />										
@@ -692,6 +692,7 @@
 							<div class="ObjetosColuna">
 								<p:outputLabel value="Resultado SeTrans" />
 								<p:selectOneMenu id="console" value="#{valesocialBean.valesocial.resultadosetrans_valesoc}" class = "TamanhoSelectMIN">
+									<f:selectItem itemValue="" itemLabel="" />
 					    	 		<f:selectItem itemLabel="Deferido" itemValue="D" />
 					    	 		<f:selectItem itemLabel="Indeferido" itemValue="I" />
 			                    </p:selectOneMenu>

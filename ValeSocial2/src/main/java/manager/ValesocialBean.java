@@ -263,5 +263,59 @@ public class ValesocialBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}	
 	}
+	
+	public String imprimirlistagem() {
+		
+		try {
+			
+			ValeSocialDao vd  = new ValeSocialDao();
+			
+			valesociallista = vd.findAll(valesocial);
+			
+			if(valesociallista.size()==0) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sem dados para imprimir", ""));
+			} else {
+
+				DSReportFicha ds = new DSReportFicha(valesociallista);					
+
+				InputStream arquivo = FacesContext.getCurrentInstance()
+					.getExternalContext().getResourceAsStream("/valesocialcadastro.jasper");	
+			
+				byte[] pdf = JasperRunManager.runReportToPdf(arquivo, null, ds);
+
+				HttpServletResponse res = (HttpServletResponse) FacesContext
+						.getCurrentInstance().getExternalContext().getResponse();
+
+				res.setContentType("application/pdf");
+
+				res.setContentLength(pdf.length);
+
+				OutputStream out = res.getOutputStream();
+
+				out.write(pdf, 0, pdf.length);
+
+				out.flush();	
+
+				out.close();
+				
+				FacesContext.getCurrentInstance().responseComplete();
+				
+				valesocial = new ValeSocial();
+			}					
+					
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		
+		return null;
+	}
+	
+	public String imprimirquantidades() {
+		
+		return null;
+	}
 
 }

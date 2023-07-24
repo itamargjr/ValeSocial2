@@ -219,9 +219,7 @@ public class DSReportFicha implements JRDataSource {
 		if(field.getName().equalsIgnoreCase("quantvales_valesoc")){
 			if (registro.getQuantvales_valesoc()!=null) {			
 				return new BigDecimal(registro.getQuantvales_valesoc());
-			} else {
-				return new BigDecimal(0.0);
-			}
+			} 
 		}
 		
 		if(field.getName().equalsIgnoreCase("motindefermed_valesoc")){
