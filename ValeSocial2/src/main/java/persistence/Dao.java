@@ -29,7 +29,8 @@ public class Dao {
 //	private final String URL = "jdbc:mysql://207.244.230.138:3306/x2plataf_sistemas"; // URL Integrator
 //	private final String URL = "jdbc:mysql://15.235.55.109:3306/x2plataf_sistemas"; // URL Integrator DEV
 //	private final String URL = "jdbc:mysql://localhost:3306/x2plataf_sistemas"; // URL Perdida 
-	private final String URL = "jdbc:mysql://15.235.55.109:3306/protagoras_prefnil"; // URL Protagoras
+//	private final String URL = "jdbc:mysql://15.235.55.109:3306/protagoras_prefnil"; // URL Protagoras
+	private final String URL = "jdbc:mysql://localhost:3306/protagoras_prefnil"; // URL Protagoras Localhost
 	
 //	private final String USER = "x2plataf_admin"; // Usuario Perdido 
 //	private final String PASS = "EducaNilopolis2021*/"; // Usuario Perdido 
