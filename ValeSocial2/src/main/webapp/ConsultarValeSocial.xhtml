@@ -83,15 +83,6 @@
 			</h:form>
 		</p:panel>
 		
-		<br/>
-		
-		<h:form><h:commandLink value="Imprimir resultados" 
-		                       action="#{valesocialBean.imprimelistarequerimentos}" 
-		                       target="_blank" /></h:form>
-		
-		<br/>
-		<br/>
-		
     	<h:form id="formlista">   	    		
     	
     		<p:panel rendered="#{valesocialBean.valesociallista.size() gt 0}">	
@@ -158,8 +149,9 @@
 					</p:column>
 					
 					<p:column>
-						<p:commandLink value="Enviar para SeTrans" action="#{valesocialBean.abrirdialogoenviosetrans}" >
+						<p:commandLink value="Enviar para SeTrans" action="#{valesocialBean.abrirdialogoenviosetrans}" update="formenviosetrans">
 							<f:setPropertyActionListener value="#{vs}" target="#{valesocialBean.valesocial}" />
+							<p:ajax update="formenviosetrans" />
 						</p:commandLink>
 					</p:column>
 				</p:dataTable>
@@ -459,9 +451,13 @@
    	  		</h:form>
    	  	</p:dialog>	
    	  	
-   	  	<p:dialog widgetVar="dialogoenviosetrans" modal="true" header="Consulta de Requerimento">
+   	  	<p:dialog widgetVar="dialogoenviosetrans" modal="true" header="Envio SETRANS">
    	  		<h:form id="formenviosetrans">
 	            <div class="ObjetosLinha">
+	            	<div class="ObjetosColuna">
+						<p:outputLabel value="Requerente" />
+						<p:inputText  onfocus="Data(this)" value="#{valesocialBean.valesocial.requerente_valesoc}" class="TamanhoM" disabled="true"/>								
+					</div>
 					<div class="ObjetosColuna">
 						<p:outputLabel value="Nascimento" />
 						<p:inputText  onfocus="Data(this)" value="#{valesocialBean.valesocial.nascimento_valesoc}" class="TamanhoMIN" disabled="true"/>								
@@ -719,7 +715,7 @@
 		      			<div class="ObjetosLinha">  
 	      					<div class="ObjetosColuna">
 								<p:outputLabel value="Análise Inicial" />
-								<p:selectOneMenu value="#{valesocialBean.valesocial.tipodef_valesoc}" styleClass="TamanhoSelectM">
+								<p:selectOneMenu value="#{valesocialBean.valesocial.analiseinicial_valesoc}" styleClass="TamanhoSelectM">
 									<f:selectItem itemValue="" itemLabel="" />
 									<f:selectItem itemValue="D" itemLabel="Deferido" />
 									<f:selectItem itemValue="I" itemLabel="Indeferido" />										

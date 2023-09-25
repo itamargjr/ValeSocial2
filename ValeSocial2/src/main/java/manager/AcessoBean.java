@@ -173,7 +173,7 @@ public class AcessoBean implements Serializable {
 				session.setAttribute("loginusulogado", usuariologado.getLogin_usu());
 				session.setAttribute("idusulogado", usuariologado.getId_usu());
 				
-				acessosmenulista = ad.CarregaListadeAcessos(4, usuariologado.getId_usu(), usuariologado.getTipo_usu());
+				//acessosmenulista = ad.CarregaListadeAcessos(4, usuariologado.getId_usu(), usuariologado.getTipo_usu());
 				
 				if (usuariologado.getTipo_usu().equalsIgnoreCase("A")) {
 					session.setAttribute("usuadm", "S");
@@ -284,7 +284,9 @@ public class AcessoBean implements Serializable {
 		
 		String desabilita;
 		
-		if ((adm != null) && (adm.equals("S"))) 		 		
+		if (item==0) {
+			desabilita = "false"; // Falta implementar/não tem controle de acesso no XHTML - habilita tudo
+		} else if ((adm != null) && (adm.equals("S"))) 		 		
 			desabilita = "false"; // Administrador - habilita tudo
 		else{			
 			Ctrl_usuariosDao valida = new Ctrl_usuariosDao();

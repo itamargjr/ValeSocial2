@@ -1,16 +1,18 @@
 package manager;
 
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
 import org.primefaces.PrimeFaces;
@@ -142,11 +144,6 @@ public class ValesocialBean {
 		}
 	}
 	
-	public String imprimelistarequerimentos() {
-		
-		return null;
-	}
-	
 	public String imprimirFicha() {
 
 		if ((valesocial.getId_valesoc()==null)) {
@@ -165,8 +162,16 @@ public class ValesocialBean {
 
 					InputStream arquivo = FacesContext.getCurrentInstance()
 						.getExternalContext().getResourceAsStream("/valesocial.jasper");	
+					
+					Map<String, Object> param = new HashMap<>();
+					
+					String caminho = "./resources/imagens/governo-rio-de-janeiro-logo.png";
+					
+					ServletContext scontext = (ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
+					
+					param.put("pLogoRJ", scontext.getRealPath(caminho));
 				
-					byte[] pdf = JasperRunManager.runReportToPdf(arquivo, null, ds);
+					byte[] pdf = JasperRunManager.runReportToPdf(arquivo, param, ds);
 
 					HttpServletResponse res = (HttpServletResponse) FacesContext
 							.getCurrentInstance().getExternalContext().getResponse();
@@ -184,14 +189,6 @@ public class ValesocialBean {
 					out.close();
 					
 					FacesContext.getCurrentInstance().responseComplete();
-					
-					OutputStream fileout = new FileOutputStream("fichavalesocial.pdf");	
-					
-					fileout.write(pdf, 0, pdf.length);
-
-					fileout.flush();	
-
-					fileout.close();
 				}					
 				
 			} catch (Exception e) {
@@ -281,7 +278,15 @@ public class ValesocialBean {
 				InputStream arquivo = FacesContext.getCurrentInstance()
 					.getExternalContext().getResourceAsStream("/valesocialcadastro.jasper");	
 			
-				byte[] pdf = JasperRunManager.runReportToPdf(arquivo, null, ds);
+				Map<String, Object> param = new HashMap<>();
+				
+				String caminho = "./resources/imagens/governo-rio-de-janeiro-logo.png";
+				
+				ServletContext scontext = (ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
+				
+				param.put("pLogoRJ", scontext.getRealPath(caminho));
+			
+				byte[] pdf = JasperRunManager.runReportToPdf(arquivo, param, ds);
 
 				HttpServletResponse res = (HttpServletResponse) FacesContext
 						.getCurrentInstance().getExternalContext().getResponse();
